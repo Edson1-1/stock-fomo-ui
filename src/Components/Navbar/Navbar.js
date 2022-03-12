@@ -1,11 +1,11 @@
 
 
-import SVG from "./Commons/Svg";
+import SVG from "../Commons/Svg";
 import SearchBar from "./SearchBar";
 export default function Navbar({ showContent }) {
 
     return (
-        <div className="bg-primary-500 relative min-w-full border border-black">
+        <div className="bg-primary-500 relative min-w-full border-black">
             <div className="flex justify-center md:justify-between py-[30px] md:pt-[33px] md:px-[39px] text-white text-3xl md:text-base h-28">
                 <div className=""><b>Stock</b>FOMO</div>
                 <div className="hidden md:block">Buy me a coffee</div>
