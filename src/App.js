@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Routes, BrowserRouter as Router, useParams } from 'react-router-dom';
 
 
-import Navbar from './Components/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 import FomoSuggestions from './Components/FomoSuggestions';
+import ResultDashboard from './Components/ResultDashboard/ResultDashboard';
+
 
 function App() {
 
   const [stockData, setStockData] = useState({});
   const [showContent, setShowContent] = useState(true);
-  const suggestionsArray=[
+  const suggestionsArray = [
     {
       amount: 10000,
       ticker: "TataMotors",
@@ -43,19 +45,20 @@ function App() {
   //   setShowContent(false);
   //   return () => {setStockData({}); setShowContent(true)};
   // }, []);
-
   return (
     <div className="font-poppins">
-      <Navbar showContent={showContent} />
-      {showContent && <div className='hidden md:block my-28 mx-48 scale-75 '>
-        <h1>Try these for desperate FOMOs</h1>
-        <div className=' grid grid-cols-2'>
-          { suggestionsArray.map( sugesstion => ( <FomoSuggestions amount={sugesstion.amount} ticker={sugesstion.ticker} date={sugesstion.date} />))}
-        </div>
-      </div>}
-      {/* <div className='w-full'>
-        <button className='block bg-black text-white rounded p-2 mx-auto bottom-0' onClick={() => setShowContent(!showContent)}>toggle nav</button>
-      </div> */}
+      <Router>
+        <Navbar showContent={showContent} />
+        {showContent && <div className='hidden md:block my-28 mx-48 scale-75 '>
+          <h1>Try these for desperate FOMOs</h1>
+          <div className=' grid grid-cols-2'>
+            {suggestionsArray.map(sugesstion => (<FomoSuggestions amount={sugesstion.amount} ticker={sugesstion.ticker} date={sugesstion.date} />))}
+          </div>
+        </div>}
+        <Routes>
+          <Route path='/:ticker' element={<ResultDashboard />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
