@@ -10,8 +10,8 @@ import ResultDashboard from './Components/ResultDashboard/ResultDashboard';
 function App() {
 
   const [stockData, setStockData] = useState({});
-  const [showContent, setShowContent] = useState(false);
-  const suggestionsArray=[
+  const [showContent, setShowContent] = useState(true);
+  const suggestionsArray = [
     {
       amount: 10000,
       ticker: "TataMotors",
@@ -47,16 +47,16 @@ function App() {
   // }, []);
   return (
     <div className="font-poppins">
-      <Navbar showContent={showContent} />
-      {showContent && <div className='hidden md:block my-28 mx-48 scale-75 '>
-        <h1>Try these for desperate FOMOs</h1>
-        <div className=' grid grid-cols-2'>
-          { suggestionsArray.map( sugesstion => ( <FomoSuggestions amount={sugesstion.amount} ticker={sugesstion.ticker} date={sugesstion.date} />))}
-        </div>
-      </div>}
       <Router>
+        <Navbar showContent={showContent} />
+        {showContent && <div className='hidden md:block my-28 mx-48 scale-75 '>
+          <h1>Try these for desperate FOMOs</h1>
+          <div className=' grid grid-cols-2'>
+            {suggestionsArray.map(sugesstion => (<FomoSuggestions amount={sugesstion.amount} ticker={sugesstion.ticker} date={sugesstion.date} />))}
+          </div>
+        </div>}
         <Routes>
-            <Route path='/:ticker' element={ <ResultDashboard/> } />
+          <Route path='/:ticker' element={<ResultDashboard />} />
         </Routes>
       </Router>
     </div>

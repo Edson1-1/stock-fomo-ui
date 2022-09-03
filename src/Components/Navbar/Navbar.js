@@ -2,13 +2,15 @@
 
 import SVG from "../Commons/Svg";
 import SearchBar from "./SearchBar";
-export default function Navbar({ showContent }) {
+import { useNavigate } from 'react-router-dom';
 
+export default function Navbar({ showContent }) {
+    let navigate = useNavigate()
     return (
-        <div className="bg-primary-500 relative min-w-full border-black">
+        <div className="bg-primary-500 relative min-w-full">
             <div className="flex justify-center md:justify-between py-[30px] md:pt-[33px] md:px-[39px] text-white text-3xl md:text-base h-28">
-                <div className=""><b>Stock</b>FOMO</div>
-                <div className="hidden md:block">Buy me a coffee</div>
+                <div onClick={ () => navigate('/')} className="cursor-pointer"><b>Stock</b>FOMO</div>
+                <div className="hidden md:block md: cursor-pointer">Buy me a coffee</div>
             </div>
             <div>
                 {showContent && <div className="px-5 pt-5 mx-auto text-center text-base w-1/2">

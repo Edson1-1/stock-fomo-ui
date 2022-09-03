@@ -13,6 +13,7 @@ export default function ResultDashboard(props) {
     }
 
     if (data.success) {
+        let ad = true;
         return (
             <div className='block md:px-24 px-10 mx-auto'>
                 <WouldHaveBeen capitalGain={4675860} percentageGrowth={457.57} growthDirection='+' affordableDream='Audi A4' />
@@ -20,10 +21,10 @@ export default function ResultDashboard(props) {
                     <div className="row-span-2 lg:col-span-2 mb-14 lg:mb-0">
                         <ImportantEventsTable />
                     </div>
-                    <div className="w-full lg:col-span-3 mb-14 lg:mb-0">
+                    <div className={`w-full lg:col-span-${ ad ? 3: 4} mb-14 lg:mb-0`}>
                         <AsOfToday />
                     </div>
-                    {true && <div className="w-full mb-14 lg:mb-0">
+                    {ad && <div className="w-full lg:col-span-1 mb-14 lg:mb-0">
                         <AdDisplay />
                     </div>}
                     <div className="w-full lg:col-span-4 mb-14 lg:mb-0">
