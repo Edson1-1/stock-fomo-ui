@@ -19,7 +19,7 @@ export default function WouldHaveBeen({ capitalGain = 0, percentageGrowth = 0.00
                 <div className="left-0 lg:mx-auto">
                     <p className="text-sm py-2">It would have been</p>
                     <h1 className="text-2xl font-semibold text-primary-500">{formatedNumber} INR</h1>
-                    <span className="text-sm text-green-600 pb-2">{growthDirection} {percentageGrowth}%</span>
+                    <span className="text-sm text-green-600 pb-2">{growthDirection} {parseFloat(percentageGrowth).toFixed(2)}% CAGR</span>
                 </div>
             </div>
 
