@@ -13,7 +13,7 @@ export default function ResultDashboard(props) {
     }
 
     if (data.success) {
-        let ad = true;
+        let ad = false;
         return (
             <div className='block md:px-24 px-10 mx-auto'>
                 <WouldHaveBeen capitalGain={4675860} percentageGrowth={457.57} growthDirection='+' affordableDream='Audi A4' />

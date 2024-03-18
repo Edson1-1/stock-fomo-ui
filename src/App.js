@@ -11,6 +11,7 @@ function App() {
 
   const [stockData, setStockData] = useState({});
   const [showContent, setShowContent] = useState(true);
+
   const suggestionsArray = [
     {
       amount: 10000,
@@ -39,20 +40,18 @@ function App() {
     }
   ]
 
-  // useEffect( () => {
-  //   const {data} = require('./test-data.json');
-  //   setStockData(data);
-  //   setShowContent(false);
-  //   return () => {setStockData({}); setShowContent(true)};
-  // }, []);
   return (
     <div className="font-poppins">
       <Router>
-        <Navbar showContent={showContent} />
+        <Navbar showContent={showContent} setShowContent={setShowContent}  />
         {showContent && <div className='hidden md:block my-28 mx-48 scale-75 '>
           <h1>Try these for desperate FOMOs</h1>
           <div className=' grid grid-cols-2'>
-            {suggestionsArray.map(sugesstion => (<FomoSuggestions amount={sugesstion.amount} ticker={sugesstion.ticker} date={sugesstion.date} />))}
+            {suggestionsArray.map(sugesstion => (<FomoSuggestions 
+            amount={sugesstion.amount} ticker={sugesstion.ticker} date={sugesstion.date} 
+            setShowContent={setShowContent}
+            />))}
+
           </div>
         </div>}
         <Routes>

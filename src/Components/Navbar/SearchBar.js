@@ -1,6 +1,8 @@
 
 import Button from '../Commons/Button';
-export default function SearchBar() {
+import { useNavigate } from 'react-router-dom';
+export default function SearchBar({ setShowContent }) {
+    let navigate = useNavigate()
     
     return (
         <div className="w-full absolute bottom-0 translate-y-1/2 px-10">
@@ -22,7 +24,11 @@ export default function SearchBar() {
                 </div>
                 
                 <div className='w-full'>
-                    <Button icon="search" text="Search" className="bg-primary-500 hover:bg-primary-700 rounded-[16px] text-white w-full mb-2" />
+                    <Button icon="search" text="Search" className="bg-primary-500 hover:bg-primary-700 rounded-[16px] text-white w-full mb-2" onClick={() => {
+                        setShowContent(false)
+                        navigate('/tata')
+
+                    }} />
                     <Button text="Clear" className="md:hidden hover:bg-gray-100 bg-white border border-gray-700 rounded-[16px] text-gray-700 w-full" />
 
                 </div>
